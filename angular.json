@@ -9,7 +9,7 @@
       "projectType": "library",
       "prefix": "lib",
       "architect": {
-        "build": {
+        "build:2": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "projects/ng-cmd-builder/tsconfig.lib.json",
@@ -19,6 +19,12 @@
             "production": {
               "tsConfig": "projects/ng-cmd-builder/tsconfig.lib.prod.json"
             }
+          }
+        },
+        "build": {
+          "builder": "@testdozer/ng-cmd-builder:build",
+          "options": {
+            "command": "npm run test:build"
           }
         },
         "test": {
