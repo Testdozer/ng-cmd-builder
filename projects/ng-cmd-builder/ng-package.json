@@ -1,0 +1,11 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ng-cmd-builder",
+  "assets": [
+    "./builders.json",
+    "./src/lib/build/schema.json"
+  ],
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "build": {
+      "implementation": "./esm5/public_api",
+      "schema": "./src/lib/build/schema.json",
+      "description": "Executes cmd command"
+    }
+  }
+}

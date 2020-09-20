@@ -1,0 +1,28 @@
+{
+  "name": "@testdozer/ng-cmd-builder",
+  "version": "0.0.0-semantically-released",
+  "author": "dvabuzyarov(at)gmail.com",
+  "license": "MIT",
+  "readme": "README.md",
+  "description": "Angular builder that executes CMD command",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/testdozer/ng-cmd-builder"
+  },
+  "keywords": [
+    "angular",
+    "builder",
+    "cmd"
+  ],
+  "bugs": {
+    "url": "https://github.com/testdozer/ng-cmd-builder/issues"
+  },
+  "builders": "./builders.json",
+  "peerDependencies": {
+    "@angular-devkit/architect": "0.1001.2",
+    "@angular-devkit/core": "0.1001.2"
+  }
+}
