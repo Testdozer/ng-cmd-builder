@@ -24,5 +24,9 @@
   "peerDependencies": {
     "@angular-devkit/architect": "0.1001.2",
     "@angular-devkit/core": "0.1001.2"
+  },
+  "devDependencies": {
+    "jasmine": "3.5.0",
+    "reflect-metadata": "0.1.13"
   }
 }
