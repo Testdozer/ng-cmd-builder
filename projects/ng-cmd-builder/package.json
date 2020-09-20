@@ -25,6 +25,9 @@
     "@angular-devkit/architect": "0.1001.2",
     "@angular-devkit/core": "0.1001.2"
   },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
   "devDependencies": {
     "jasmine": "3.5.0",
     "reflect-metadata": "0.1.13"
