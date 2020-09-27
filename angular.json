@@ -9,18 +9,6 @@
       "projectType": "library",
       "prefix": "lib",
       "architect": {
-        "build:2": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/ng-cmd-builder/tsconfig.lib.json",
-            "project": "projects/ng-cmd-builder/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/ng-cmd-builder/tsconfig.lib.prod.json"
-            }
-          }
-        },
         "build": {
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {

@@ -1,7 +1,7 @@
 {
   "builders": {
     "build": {
-      "implementation": "./public_api",
+      "implementation": "./lib/build/index",
       "schema": "./lib/build/schema.json",
       "description": "Executes cmd command"
     }

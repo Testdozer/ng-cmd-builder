@@ -17,7 +17,7 @@ jasmine.configureDefaultReporter({
 });
 
 jasmine.loadConfig({
-  spec_dir: "./out-tsc",
+  spec_dir: "./",
   spec_files: [
     "**/*.[sS]pec.js"
   ]
