@@ -1,15 +1,16 @@
 {
   "name": "",
   "version": "0.0.0-semantically-released",
+  "build": {
+    "target": "./dist/ng-cmd-builder/",
+    "source": "./projects/ng-cmd-builder"
+  },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build2": "ng build ng-cmd-builder && cpx README.md ./dist/ng-cmd-builder/",
-    "build": "npm run builder:build && npm run build:assets",
-    "build:assets": "cpx README.md ./dist/ng-cmd-builder/ && cpx ./projects/ng-cmd-builder/builders.json ./dist/ng-cmd-builder && cpx ./projects/ng-cmd-builder/package.json ./dist/ng-cmd-builder && cpx ./projects/ng-cmd-builder/src/lib/build/schema.json ./dist/ng-cmd-builder/lib/build && cpx ./projects/ng-cmd-builder/src/lib/build/schema.d.ts ./dist/ng-cmd-builder/lib/build",
-    "builder:build": "tsc -p projects/ng-cmd-builder/tsconfig.lib.prod.json",
-    "test:build": "tsc -p projects/ng-cmd-builder/tsconfig.spec.json ",
+    "build": "ng build ng-cmd-builder && npm run build:assets",
     "test": "npm run test:build && cd ./out-tsc/spec/ && node index.specs.js",
+    "build:builder": "tsc -p projects/ng-cmd-builder/tsconfig.lib.prod.json",
+    "build:assets": "node copy:assets.js",
+    "test:build": "tsc -p projects/ng-cmd-builder/tsconfig.spec.json ",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "commit": "git-cz",
@@ -28,7 +29,7 @@
     "@angular/language-service": "10.1.2",
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
-    "@testdozer/ng-cmd-builder": "1.0.1",
+    "@testdozer/ng-cmd-builder": "1.0.2",
     "@types/jasmine": "3.5.11",
     "@types/node": "12.12.39",
     "codelyzer": "5.2.2",
@@ -72,5 +73,6 @@
       "pre-commit": "npm run lint && npm run test",
       "commit-msg": "commitlint --edit"
     }
-  }
+  },
+  "dependencies": {}
 }
