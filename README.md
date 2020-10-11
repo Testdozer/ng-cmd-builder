@@ -26,9 +26,9 @@ in angular.json
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {
             "command": "npm run build:builder",
-            args: ["param"],
-            options:{
-              env: {"ENVIRONMENT_PARAM": "value"}
+            "args": ["param"],
+            "options":{
+              "env": {"ENVIRONMENT_PARAM": "value"}
             }
           }
         }
