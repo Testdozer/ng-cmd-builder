@@ -4,7 +4,7 @@
   "author": "dvabuzyarov(at)gmail.com",
   "license": "MIT",
   "readme": "README.md",
-  "description": "Angular builder that executes CMD command",
+  "description": "Angular CLI builder that executes a CMD command",
   "publishConfig": {
     "access": "public"
   },
@@ -14,6 +14,7 @@
   },
   "keywords": [
     "angular",
+    "cli",
     "builder",
     "cmd"
   ],
