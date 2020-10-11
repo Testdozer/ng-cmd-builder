@@ -9,5 +9,67 @@
 [![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@testdozer/ng-cmd-builder.svg)](https://www.npmjs.com/package/@testdozer/ng-cmd-builder)
 [![License](https://img.shields.io/npm/l/@testdozer/ng-cmd-builder.svg)](https://www.npmjs.com/package/@testdozer/ng-cmd-builder)
 
-This is an angular builder that executes cmd command. 
+This is an angular [CLI builder](https://angular.io/guide/cli-builder) that executes a cmd command. 
 It runs the command with nodejs [spawn](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_spawn_command_args_options).
+
+At the moment schematics projects and another nodejs projects are not supported by the [angular workspace](https://angular.io/cli#workspaces-and-project-files) 
+due the lack of available builders.
+
+```bash
+npm install @testdozer/ng-cmd-builder -D
+```
+
+in angular.json
+```json
+  "architect": {
+        "build": {
+          "builder": "@testdozer/ng-cmd-builder:build",
+          "options": {
+            "command": "npm run build:builder",
+            args: ["param"],
+            options:{
+              env: {"ENVIRONMENT_PARAM": "value"}
+            }
+          }
+        }
+  }
+```
+
+The builder supports options that reflect subset of [spawn](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_spawn_command_args_options) options, and they have the same meaning.
+
+```typescript
+/**
+ * Options for CMD Builder
+ */
+export interface Schema {
+    /**
+     * The command to run.
+     */
+    command: string;
+    /**
+     * List of string arguments.
+     */
+    args?: string[];
+    /**
+     * Environment key-value pairs.
+     */
+    options?: {
+        env?: { [name: string]: string; };
+        /**
+         * Current working directory
+         */
+        cwd?: string;
+        /**
+         * <boolean> | <string> If true, runs command inside of a shell. Uses '/bin/sh' on Unix, and process.env.ComSpec on Windows.
+         * A different shell can be specified as a string. See Shell requirements and Default Windows shell. Default: true.
+         */
+        shell: string;
+        /**
+         * Hide the subprocess console window that would normally be created on Windows systems.
+         */
+        windowsHide?: boolean;
+    };
+}
+```
+
+[Supported options json schema](https://github.com/Testdozer/ng-cmd-builder/blob/master/projects/ng-cmd-builder/src/lib/build/schema.json)
