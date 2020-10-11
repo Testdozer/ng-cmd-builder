@@ -1,0 +1,9 @@
+{
+  "builders": {
+    "build": {
+      "implementation": "./lib/build/index",
+      "schema": "./lib/build/schema.json",
+      "description": "Executes cmd command"
+    }
+  }
+}
