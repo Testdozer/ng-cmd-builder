@@ -12,7 +12,25 @@
         "build": {
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {
-            "command": "npm run builder:build"
+            "command": "npm run builder:build",
+            "assets": [
+              {
+                "source": "./projects/ng-cmd-builder/package.json",
+                "dest": "./dist/ng-cmd-builder"
+              },
+              {
+                "source": "./projects/ng-cmd-builder/builders.json",
+                "dest": "./dist/ng-cmd-builder"
+              },
+              {
+                "source": "./projects/ng-cmd-builder/src/lib/build/schema.json",
+                "dest": "./dist/ng-cmd-builder/lib/build"
+              },
+              {
+                "source": "./projects/ng-cmd-builder/src/lib/build/schema.d.ts",
+                "dest": "./dist/ng-cmd-builder/lib/build"
+              }
+            ]
           }
         },
         "test": {
