@@ -11,6 +11,10 @@ import { spawn } from "child_process";
 import { PROCESS } from "./injection-tokens/process.injection-token";
 import { CONSOLE } from "./injection-tokens/console.injection-token";
 import { OptionsBuilder } from "./options.builder";
+import { AssetsHandler } from "./assets.handler";
+import { COPY } from "./injection-tokens/copy.injection-token";
+// tslint:disable-next-line:no-require-imports
+const cpx = require("cpx");
 
 export default createBuilder(function (
     options: JsonObject & Schema,
@@ -22,10 +26,13 @@ export default createBuilder(function (
         {provide: SPAWN, useValue: spawn, deps: []},
         {provide: PROCESS, useValue: process, deps: []},
         {provide: CONSOLE, useValue: console, deps: []},
+        {provide: COPY, useValue: cpx.copySync, deps: []},
         {provide: ProcessProvider, useClass: ProcessProvider, deps: [SPAWN, PROCESS, CONSOLE]},
         {provide: OptionsBuilder, useClass: OptionsBuilder, deps: []},
         {provide: BuilderFactory, useClass: BuilderFactory, deps: [BUILDER_OPTIONS, BUILDER_CONTEXT, ProcessProvider, OptionsBuilder]},
+        {provide: AssetsHandler, useClass: AssetsHandler, deps: [BUILDER_OPTIONS, BUILDER_CONTEXT, COPY]},
     ]);
     const factory = injector.get(BuilderFactory);
-    return factory.create();
+    const assetsHandler = injector.get(AssetsHandler);
+    return factory.create().then((output) => assetsHandler.handle(output));
 });

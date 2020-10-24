@@ -29,4 +29,43 @@ export interface Schema {
          */
         windowsHide?: boolean;
     };
+    /**
+     *  List of assets are copied with cpx
+     */
+    assets?: {
+        /**
+         * A file glob of copy targets.
+         */
+        source: string;
+        /**
+         * A file path of a destination directory.
+         */
+        dest: string;
+        options?: {
+            /**
+             * The flag to remove files that copied on past before copy.
+             */
+            clean?: boolean;
+            /**
+             * The flag to follow symbolic links when copying from them.
+             */
+            dereference?: boolean;
+            /**
+             * The flag to copy empty directories which is matched with the glob.
+             */
+            includeEmptyDirs?: boolean;
+            /**
+             * The flag to not copy at the initial time of watch.
+             */
+            initialCopy?: boolean;
+            /**
+             * The flag to copy uid, gid, atime, and mtime of files.
+             */
+            preserve?: boolean;
+            /**
+             * The flag to not overwrite files on destination if the source file is older.
+             */
+            update?: boolean;
+        };
+    }[];
 }

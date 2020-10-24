@@ -11,5 +11,12 @@
   },
   "baseBranches": [
     "dev"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "@testdozer/ng-cmd-builder"
+      ]
+    }
   ]
 }
