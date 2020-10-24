@@ -33,13 +33,12 @@ describe("Assets handler", () => {
         resolve(BUILDER_OPTIONS)
             .setup(instance => instance.assets)
             .returns([{source, dest, options}]);
-        resolve(COPY)
-            .setup(instance => instance(source, dest, options, It.IsAny()))
-            .callback(({args: [, , , callback]}) => callback(null));
 
         const handler = get(AssetsHandler);
         const actual = await handler.handle({success: true});
 
+        resolve(COPY)
+            .verify(instance => instance(source, dest, options));
         expect(actual).toEqual({success: true});
     });
 
@@ -60,8 +59,8 @@ describe("Assets handler", () => {
             .setup(instance => instance.assets)
             .returns([{source, dest, options}]);
         resolve(COPY)
-            .setup(instance => instance(source, dest, options, It.IsAny()))
-            .callback(({args: [, , , callback]}) => callback(error));
+            .setup(instance => instance(source, dest, options))
+            .throws(error);
 
         const handler = get(AssetsHandler);
         const actual = await handler.handle({success: true});

@@ -1,4 +1,5 @@
 import { InjectionToken } from "@angular/core";
-import cpx from "cpx";
+// tslint:disable-next-line:no-require-imports
+const cpx = require("cpx");
 
-export const COPY = new InjectionToken<typeof cpx.copy>("cpx copy");
+export const COPY = new InjectionToken<typeof cpx.copySync>("copySync");

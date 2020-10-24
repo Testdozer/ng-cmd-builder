@@ -23,17 +23,16 @@ export class AssetsHandler {
         return new Promise<BuilderOutput>(resolve => {
             for (const asset of assets) {
                 const {source, dest, options} = asset;
-                this.cpx(source, dest, options, ((error: Error | null) => {
-                    if (error) {
-                        this.context.logger.error(error.message);
-                        resolve({success: false});
-                    }
-                }));
+                try {
+                    this.cpx(source, dest, options);
+                } catch (error) {
+                    this.context.logger.error(error.message);
+                    resolve({success: false});
+                }
             }
 
             resolve({success});
         });
-
     }
 }
 

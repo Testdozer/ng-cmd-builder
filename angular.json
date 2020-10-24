@@ -12,7 +12,7 @@
         "build": {
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {
-            "command": "npm run build:builder"
+            "command": "npm run builder:build"
           }
         },
         "test": {

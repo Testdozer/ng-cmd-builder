@@ -13,7 +13,8 @@ import { CONSOLE } from "./injection-tokens/console.injection-token";
 import { OptionsBuilder } from "./options.builder";
 import { AssetsHandler } from "./assets.handler";
 import { COPY } from "./injection-tokens/copy.injection-token";
-import cpx from "cpx";
+// tslint:disable-next-line:no-require-imports
+const cpx = require("cpx");
 
 export default createBuilder(function (
     options: JsonObject & Schema,
@@ -25,7 +26,7 @@ export default createBuilder(function (
         {provide: SPAWN, useValue: spawn, deps: []},
         {provide: PROCESS, useValue: process, deps: []},
         {provide: CONSOLE, useValue: console, deps: []},
-        {provide: COPY, useValue: cpx.copy, deps: []},
+        {provide: COPY, useValue: cpx.copySync, deps: []},
         {provide: ProcessProvider, useClass: ProcessProvider, deps: [SPAWN, PROCESS, CONSOLE]},
         {provide: OptionsBuilder, useClass: OptionsBuilder, deps: []},
         {provide: BuilderFactory, useClass: BuilderFactory, deps: [BUILDER_OPTIONS, BUILDER_CONTEXT, ProcessProvider, OptionsBuilder]},
@@ -33,5 +34,5 @@ export default createBuilder(function (
     ]);
     const factory = injector.get(BuilderFactory);
     const assetsHandler = injector.get(AssetsHandler);
-    return factory.create().then(assetsHandler.handle);
+    return factory.create().then((output) => assetsHandler.handle(output));
 });

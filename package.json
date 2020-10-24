@@ -6,10 +6,10 @@
     "source": "./projects/ng-cmd-builder"
   },
   "scripts": {
-    "build": "ng build ng-cmd-builder && npm run build:assets",
+    "build": "ng build ng-cmd-builder && npm run builder:build:assets",
     "test": "npm run test:build && cd ./out-tsc/spec/ && node index.specs.js",
-    "build:builder": "tsc -p projects/ng-cmd-builder/tsconfig.lib.prod.json",
-    "build:assets": "node copy:assets.js",
+    "builder:build": "tsc -p projects/ng-cmd-builder/tsconfig.lib.prod.json",
+    "builder:build:assets": "node copy:assets.js",
     "test:build": "tsc -p projects/ng-cmd-builder/tsconfig.spec.json ",
     "lint": "ng lint",
     "e2e": "ng e2e",
