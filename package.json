@@ -39,6 +39,7 @@
     "jasmine": "3.6.1",
     "jasmine-core": "3.6.0",
     "moq.ts": "6.3.1",
+    "ng-auto-moq": "4.0.2",
     "rxjs": "6.6.3",
     "semantic-release": "17.0.7",
     "ts-node": "8.10.1",

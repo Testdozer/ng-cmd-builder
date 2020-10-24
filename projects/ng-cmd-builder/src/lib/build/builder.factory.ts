@@ -7,10 +7,10 @@ import { ProcessProvider } from "./process.provider";
 import { StdioOptions } from "child_process";
 
 export class BuilderFactory {
-    constructor(private options: typeofInjectionToken<typeof BUILDER_OPTIONS>,
-                private context: typeofInjectionToken<typeof BUILDER_CONTEXT>,
-                private processProvider: ProcessProvider,
-                private optionsBuilder: OptionsBuilder) {
+    constructor(private readonly options: typeofInjectionToken<typeof BUILDER_OPTIONS>,
+                private readonly context: typeofInjectionToken<typeof BUILDER_CONTEXT>,
+                private readonly processProvider: ProcessProvider,
+                private readonly optionsBuilder: OptionsBuilder) {
     }
 
     async create(): Promise<BuilderOutput> {

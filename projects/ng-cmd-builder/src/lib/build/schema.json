@@ -40,6 +40,61 @@
           "default": false
         }
       }
+    },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/asset" }
+    }
+  },
+  "definitions": {
+    "asset": {
+      "type": "object",
+      "required": [ "source", "dest" ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "The glob of target files."
+        },
+        "dest": {
+          "type": "string",
+          "description": "The path of a destination directory."
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "clean": {
+              "type": "boolean",
+              "description": "The flag to remove files that copied on past before copy.",
+              "default": false
+            },
+            "dereference": {
+              "type": "boolean",
+              "description": "The flag to follow symbolic links when copying from them.",
+              "default": false
+            },
+            "includeEmptyDirs": {
+              "type": "boolean",
+              "description": "The flag to copy empty directories which is matched with the glob.",
+              "default": false
+            },
+            "initialCopy": {
+              "type": "boolean",
+              "description": "The flag to not copy at the initial time of watch.",
+              "default": false
+            },
+            "preserve": {
+              "type": "boolean",
+              "description": "The flag to copy uid, gid, atime, and mtime of files.",
+              "default": false
+            },
+            "update": {
+              "type": "boolean",
+              "description": "The flag to not overwrite files on destination if the source file is older.",
+              "default": false
+            }
+          }
+        }
+      }
     }
   },
   "additionalProperties": false,
