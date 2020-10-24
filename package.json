@@ -29,7 +29,7 @@
     "@types/node": "12.12.39",
     "codelyzer": "5.2.2",
     "cpx": "1.5.0",
-    "cz-conventional-changelog": "3.2.0",
+    "cz-conventional-changelog": "3.3.0",
     "husky": "4.2.5",
     "jasmine": "3.6.1",
     "jasmine-core": "3.6.0",
