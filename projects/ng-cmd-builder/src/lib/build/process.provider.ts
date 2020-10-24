@@ -3,11 +3,16 @@ import { typeofInjectionToken } from "../injector/typeof-injection-token";
 import { SPAWN } from "./injection-tokens/spawn.injection-token";
 import { PROCESS } from "./injection-tokens/process.injection-token";
 import { CONSOLE } from "./injection-tokens/console.injection-token";
+import { Inject } from "@angular/core";
 
 export class ProcessProvider {
-    constructor(private readonly spawn: typeofInjectionToken<typeof SPAWN>,
-                private readonly process: typeofInjectionToken<typeof PROCESS>,
-                private readonly console: typeofInjectionToken<typeof CONSOLE>) {
+    constructor(
+        @Inject(SPAWN)
+        private readonly spawn: typeofInjectionToken<typeof SPAWN>,
+        @Inject(PROCESS)
+        private readonly process: typeofInjectionToken<typeof PROCESS>,
+        @Inject(CONSOLE)
+        private readonly console: typeofInjectionToken<typeof CONSOLE>) {
     }
 
     create(command: string, args: string[], options: SpawnOptions) {

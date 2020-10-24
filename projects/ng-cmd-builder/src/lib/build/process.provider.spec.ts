@@ -1,35 +1,33 @@
-import { createInjector, resolve } from "../../tests.components/resolve.builder";
 import { SPAWN } from "./injection-tokens/spawn.injection-token";
 import { PROCESS } from "./injection-tokens/process.injection-token";
 import { ProcessProvider } from "./process.provider";
 import { ChildProcess } from "child_process";
 import { CONSOLE } from "./injection-tokens/console.injection-token";
+import { createMoqInjector, get, resolve } from "../../tests.components/createMoqInjector";
+import { It, Mock } from "moq.ts";
 
 describe("Process provider", () => {
     beforeEach(() => {
-        const spawn = jasmine.createSpy();
-        const process = jasmine.createSpyObj<NodeJS.Process>(["on"]);
-        const console = jasmine.createSpyObj<Console>(["error"]);
-
-        createInjector([
-            {provide: SPAWN, useValue: spawn, deps: []},
-            {provide: PROCESS, useValue: process, deps: []},
-            {provide: CONSOLE, useValue: console, deps: []},
-            {provide: ProcessProvider, useClass: ProcessProvider, deps: [SPAWN, PROCESS, CONSOLE]},
-        ]);
+        createMoqInjector(ProcessProvider);
     });
 
     it("Returns child process", () => {
         const command = "command";
         const args = [];
         const options = {};
-        const process = jasmine.createSpyObj<ChildProcess>(["on"]);
+        const process = new Mock<ChildProcess>()
+            .setup(instance => instance.on(It.IsAny(), It.IsAny()))
+            .returns(undefined)
+            .object();
 
         resolve(SPAWN)
-            .withArgs(command, args, options)
-            .and.returnValue(process);
+            .setup(instance => instance(command, args, options))
+            .returns(process);
+        resolve(PROCESS)
+            .setup(instance => instance.on(It.IsAny(), It.IsAny()))
+            .returns(undefined);
 
-        const provider = resolve(ProcessProvider);
+        const provider = get(ProcessProvider);
         const actual = provider.create(command, args, options);
 
         expect(actual).toBe(process);
@@ -39,24 +37,48 @@ describe("Process provider", () => {
         const command = "command";
         const args = [];
         const options = {};
-        const process = jasmine.createSpyObj<ChildProcess>(["on", "kill"]);
+        const processMock = new Mock<ChildProcess>()
+            .setup(instance => instance.on(It.IsAny(), It.IsAny()))
+            .returns(undefined)
+            .setup(instance => instance.kill())
+            .returns(undefined);
 
         resolve(SPAWN)
-            .withArgs(command, args, options)
-            .and.returnValue(process);
+            .setup(instance => instance(command, args, options))
+            .returns(processMock.object());
 
         resolve(PROCESS)
-            .on
-            .and.callFake((event, listener) => {
-            if (event === "SIGINT") {
-                listener();
-            }
-        });
+            .setup(instance => instance.on("SIGINT", It.IsAny()))
+            .callback(({args: [, listener]}) => listener());
 
-        const provider = resolve(ProcessProvider);
+        const provider = get(ProcessProvider);
         provider.create(command, args, options);
 
-        expect(process.kill).toHaveBeenCalledWith("SIGTERM");
+        processMock.verify(instance => instance.kill("SIGTERM"));
+    });
+
+    it("Kills process on SIGTERM", () => {
+        const command = "command";
+        const args = [];
+        const options = {};
+        const processMock = new Mock<ChildProcess>()
+            .setup(instance => instance.on(It.IsAny(), It.IsAny()))
+            .returns(undefined)
+            .setup(instance => instance.kill())
+            .returns(undefined);
+
+        resolve(SPAWN)
+            .setup(instance => instance(command, args, options))
+            .returns(processMock.object());
+
+        resolve(PROCESS)
+            .setup(instance => instance.on("SIGTERM", It.IsAny()))
+            .callback(({args: [, listener]}) => listener());
+
+        const provider = get(ProcessProvider);
+        provider.create(command, args, options);
+
+        processMock.verify(instance => instance.kill("SIGTERM"));
     });
 
     it("Logs errors with console", () => {
@@ -64,26 +86,26 @@ describe("Process provider", () => {
         const args = [];
         const options = {};
         const error = new Error();
-        const process = jasmine.createSpyObj<ChildProcess>(["on", "kill"]);
 
+        const process = new Mock<ChildProcess>()
+            .setup(instance => instance.on("error", It.IsAny()))
+            .callback(({args: [, listener]}) => listener(error))
+            .object();
         resolve(SPAWN)
-            .withArgs(command, args, options)
-            .and.returnValue(process);
+            .setup(instance => instance(command, args, options))
+            .returns(process);
+        resolve(PROCESS)
+            .setup(instance => instance.on(It.IsAny(), It.IsAny()))
+            .returns(undefined);
+        resolve(CONSOLE)
+            .setup(instance => instance.error())
+            .returns(undefined);
 
-        process
-            .on
-            .and.callFake((event: string, listener: (...args) => void) => {
-            if (event === "error") {
-                listener(error);
-            }
-            return process as ChildProcess;
-        });
-
-        const provider = resolve(ProcessProvider);
+        const provider = get(ProcessProvider);
         provider.create(command, args, options);
 
-        const console = resolve(CONSOLE);
-        expect(console.error).toHaveBeenCalledWith(error);
+        resolve(CONSOLE)
+            .verify(instance => instance.error(error));
     });
 
 });

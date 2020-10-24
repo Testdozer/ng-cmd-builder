@@ -1,11 +1,12 @@
-import { createInjector, resolve } from "../../tests.components/resolve.builder";
 import { OptionsBuilder } from "./options.builder";
+import { createMoqInjector, get } from "../../tests.components/createMoqInjector";
+import { dataMock } from "../../tests.components/data-mock";
+import { JsonObject } from "@angular-devkit/core";
+import { Schema } from "./schema";
 
 describe("Options builder", () => {
     beforeEach(() => {
-        createInjector([
-            {provide: OptionsBuilder, useClass: OptionsBuilder, deps: []},
-        ]);
+        createMoqInjector(OptionsBuilder);
     });
 
     it("Returns empty options", () => {
@@ -13,9 +14,9 @@ describe("Options builder", () => {
         const env = {};
         const shell = undefined;
         const windowsHide = undefined;
-        const options = {options: {cwd, env, shell, windowsHide}};
+        const options = dataMock<JsonObject & Schema>({options: {cwd, env, shell, windowsHide}});
 
-        const builder = resolve(OptionsBuilder);
+        const builder = get(OptionsBuilder);
         const actual = builder.build(options);
 
         expect(actual).toEqual({});
@@ -26,9 +27,9 @@ describe("Options builder", () => {
         const env = {};
         const shell = undefined;
         const windowsHide = undefined;
-        const options = {options: {cwd, env, shell, windowsHide}};
+        const options = dataMock<JsonObject & Schema>({options: {cwd, env, shell, windowsHide}});
 
-        const builder = resolve(OptionsBuilder);
+        const builder = get(OptionsBuilder);
         const actual = builder.build(options);
 
         expect(actual).toEqual({cwd});
@@ -39,9 +40,9 @@ describe("Options builder", () => {
         const env = {key: "value"};
         const shell = undefined;
         const windowsHide = undefined;
-        const options = {options: {cwd, env, shell, windowsHide}};
+        const options = dataMock<JsonObject & Schema>({options: {cwd, env, shell, windowsHide}});
 
-        const builder = resolve(OptionsBuilder);
+        const builder = get(OptionsBuilder);
         const actual = builder.build(options);
 
         expect(actual).toEqual({env});
@@ -52,9 +53,9 @@ describe("Options builder", () => {
         const env = {};
         const shell = "bash";
         const windowsHide = undefined;
-        const options = {options: {cwd, env, shell, windowsHide}};
+        const options = dataMock<JsonObject & Schema>({options: {cwd, env, shell, windowsHide}});
 
-        const builder = resolve(OptionsBuilder);
+        const builder = get(OptionsBuilder);
         const actual = builder.build(options);
 
         expect(actual).toEqual({shell});
@@ -65,9 +66,9 @@ describe("Options builder", () => {
         const env = {};
         const shell = undefined;
         const windowsHide = true;
-        const options = {options: {cwd, env, shell, windowsHide}};
+        const options = dataMock<JsonObject & Schema>({options: {cwd, env, shell, windowsHide}});
 
-        const builder = resolve(OptionsBuilder);
+        const builder = get(OptionsBuilder);
         const actual = builder.build(options);
 
         expect(actual).toEqual({windowsHide});

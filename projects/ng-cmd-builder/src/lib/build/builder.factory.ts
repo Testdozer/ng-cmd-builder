@@ -5,12 +5,16 @@ import { BUILDER_CONTEXT } from "../injector/builder-context.injection-token";
 import { OptionsBuilder } from "./options.builder";
 import { ProcessProvider } from "./process.provider";
 import { StdioOptions } from "child_process";
+import { Inject } from "@angular/core";
 
 export class BuilderFactory {
-    constructor(private readonly options: typeofInjectionToken<typeof BUILDER_OPTIONS>,
-                private readonly context: typeofInjectionToken<typeof BUILDER_CONTEXT>,
-                private readonly processProvider: ProcessProvider,
-                private readonly optionsBuilder: OptionsBuilder) {
+    constructor(
+        @Inject(BUILDER_OPTIONS)
+        private readonly options: typeofInjectionToken<typeof BUILDER_OPTIONS>,
+        @Inject(BUILDER_CONTEXT)
+        private readonly context: typeofInjectionToken<typeof BUILDER_CONTEXT>,
+        private readonly processProvider: ProcessProvider,
+        private readonly optionsBuilder: OptionsBuilder) {
     }
 
     async create(): Promise<BuilderOutput> {
