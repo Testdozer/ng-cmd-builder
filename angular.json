@@ -15,6 +15,10 @@
             "command": "npm run builder:build",
             "assets": [
               {
+                "source": "README.md",
+                "dest": "./dist/ng-cmd-builder"
+              },
+              {
                 "source": "./projects/ng-cmd-builder/package.json",
                 "dest": "./dist/ng-cmd-builder"
               },
