@@ -24,7 +24,7 @@
     "@angular/language-service": "10.2.3",
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
-    "@testdozer/ng-cmd-builder": "1.1.0",
+    "@testdozer/ng-cmd-builder": "1.2.1",
     "@types/jasmine": "3.6.1",
     "@types/node": "12.19.3",
     "codelyzer": "5.2.2",
