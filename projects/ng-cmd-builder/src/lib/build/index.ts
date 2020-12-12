@@ -1,4 +1,4 @@
-import { BuilderContext, BuilderOutput, createBuilder } from "@angular-devkit/architect";
+import { BuilderContext, BuilderOutput } from "@angular-devkit/architect";
 import { JsonObject } from "@angular-devkit/core";
 import { Schema } from "./schema";
 import { injectorFactory } from "../injector/injector.factory";
@@ -13,13 +13,13 @@ import { CONSOLE } from "./injection-tokens/console.injection-token";
 import { OptionsBuilder } from "./options.builder";
 import { AssetsHandler } from "./assets.handler";
 import { COPY } from "./injection-tokens/copy.injection-token";
-// tslint:disable-next-line:no-require-imports
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const cpx = require("cpx");
 
-export default createBuilder(function (
+export default (
     options: JsonObject & Schema,
     context: BuilderContext,
-): Promise<BuilderOutput> {
+): Promise<BuilderOutput> => {
     const injector = injectorFactory([
         {provide: BUILDER_OPTIONS, useValue: options, deps: []},
         {provide: BUILDER_CONTEXT, useValue: context, deps: []},
@@ -35,4 +35,4 @@ export default createBuilder(function (
     const factory = injector.get(BuilderFactory);
     const assetsHandler = injector.get(AssetsHandler);
     return factory.create().then((output) => assetsHandler.handle(output));
-});
+};

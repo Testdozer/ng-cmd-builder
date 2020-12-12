@@ -1,5 +1,5 @@
 import { BuilderOutput } from "@angular-devkit/architect";
-import { typeofInjectionToken } from "../injector/typeof-injection-token";
+import { TypeOfInjectionToken } from "../injector/typeof-injection-token";
 import { BUILDER_OPTIONS } from "./injection-tokens/options.injection-token";
 import { BUILDER_CONTEXT } from "../injector/builder-context.injection-token";
 import { COPY } from "./injection-tokens/copy.injection-token";
@@ -8,11 +8,11 @@ import { Inject } from "@angular/core";
 export class AssetsHandler {
     constructor(
         @Inject(BUILDER_OPTIONS)
-        private readonly options: typeofInjectionToken<typeof BUILDER_OPTIONS>,
+        private readonly options: TypeOfInjectionToken<typeof BUILDER_OPTIONS>,
         @Inject(BUILDER_CONTEXT)
-        private readonly context: typeofInjectionToken<typeof BUILDER_CONTEXT>,
+        private readonly context: TypeOfInjectionToken<typeof BUILDER_CONTEXT>,
         @Inject(COPY)
-        private readonly cpx: typeofInjectionToken<typeof COPY>) {
+        private readonly cpx: TypeOfInjectionToken<typeof COPY>) {
     }
 
     handle({success}: BuilderOutput): Promise<BuilderOutput> {
