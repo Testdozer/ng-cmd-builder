@@ -14,7 +14,7 @@ export interface Schema {
      * Environment key-value pairs.
      */
     options?: {
-        env?: { [name: string]: string; };
+        env?: { [name: string]: string };
         /**
          * Current working directory
          */

@@ -1,7 +1,5 @@
 export type IDataMock<T> = {
-  [P in keyof T]?: IDataMock<T[P]>|any;
+    [P in keyof T]?: IDataMock<T[P]> | any;
 };
 
-export function dataMock<T>(instance: IDataMock<T>): T {
-  return instance as any;
-}
+export const dataMock = <T>(instance: IDataMock<T>): T => instance as any;

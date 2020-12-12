@@ -1,6 +1,6 @@
 import { BuilderOutput } from "@angular-devkit/architect";
 import { BUILDER_OPTIONS } from "./injection-tokens/options.injection-token";
-import { typeofInjectionToken } from "../injector/typeof-injection-token";
+import { TypeOfInjectionToken } from "../injector/typeof-injection-token";
 import { BUILDER_CONTEXT } from "../injector/builder-context.injection-token";
 import { OptionsBuilder } from "./options.builder";
 import { ProcessProvider } from "./process.provider";
@@ -10,9 +10,9 @@ import { Inject } from "@angular/core";
 export class BuilderFactory {
     constructor(
         @Inject(BUILDER_OPTIONS)
-        private readonly options: typeofInjectionToken<typeof BUILDER_OPTIONS>,
+        private readonly options: TypeOfInjectionToken<typeof BUILDER_OPTIONS>,
         @Inject(BUILDER_CONTEXT)
-        private readonly context: typeofInjectionToken<typeof BUILDER_CONTEXT>,
+        private readonly context: TypeOfInjectionToken<typeof BUILDER_CONTEXT>,
         private readonly processProvider: ProcessProvider,
         private readonly optionsBuilder: OptionsBuilder) {
     }

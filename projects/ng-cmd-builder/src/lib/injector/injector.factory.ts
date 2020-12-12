@@ -1,6 +1,4 @@
 import { Injector, StaticProvider } from "@angular/core";
 
-export function injectorFactory<T>(...providers: StaticProvider[]) {
-    return Injector.create({providers});
-}
+export const injectorFactory = <T>(...providers: StaticProvider[]) => Injector.create({providers});
 

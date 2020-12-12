@@ -1,11 +1,13 @@
-/* tslint:disable:no-var-requires */
-/* tslint:disable: no-require-imports */
 import { EqualMatchingInjectorConfig, Mock } from "moq.ts";
 import "reflect-metadata";
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/naming-convention */
 const Jasmine = require("jasmine");
-/* tslint:enable: no-require-imports */
-/* tslint:enable:no-var-requires */
+/* eslint-enable @typescript-eslint/no-require-imports */
+/* eslint-enable @typescript-eslint/no-var-requires */
+/* eslint-enable @typescript-eslint/naming-convention */
 
 const jasmine = new Jasmine({}) as any;
 jasmine.configureDefaultReporter({
@@ -18,10 +20,12 @@ jasmine.configureDefaultReporter({
 });
 
 jasmine.loadConfig({
+    /* eslint-disable @typescript-eslint/naming-convention */
     spec_dir: "./",
     spec_files: [
         "**/*.[sS]pec.js"
     ]
+    /* eslint-enable @typescript-eslint/naming-convention */
 });
 
 Mock.options = {injectorConfig: new EqualMatchingInjectorConfig()};
