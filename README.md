@@ -43,6 +43,8 @@ in angular.json
 
 The builder supports options that reflect subset of [spawn](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_spawn_command_args_options) options, and they have the same meaning.
 Assets handling is implemented with [cpx](https://github.com/mysticatea/cpx) and supports the same options.
+Supported [schema.json](https://github.com/Testdozer/ng-cmd-builder/blob/master/projects/ng-cmd-builder/src/lib/build/schema.json)
+
 ```typescript
 /**
  * Options for CMD Builder
@@ -116,8 +118,5 @@ export interface Schema {
     }[];
 }
 ```
-
-[Supported options json schema](https://github.com/Testdozer/ng-cmd-builder/blob/master/projects/ng-cmd-builder/src/lib/build/schema.json)
-
 
 > [Sponsored by 2BIT GmbH](https://www.2bit.ch)
