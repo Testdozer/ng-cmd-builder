@@ -118,3 +118,6 @@ export interface Schema {
 ```
 
 [Supported options json schema](https://github.com/Testdozer/ng-cmd-builder/blob/master/projects/ng-cmd-builder/src/lib/build/schema.json)
+
+
+> [Sponsored by 2BIT GmbH](https://www.2bit.ch)
