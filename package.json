@@ -43,7 +43,7 @@
     "husky": "4.3.8",
     "jasmine": "3.6.4",
     "jasmine-core": "3.6.0",
-    "moq.ts": "6.3.1",
+    "moq.ts": "7.3.4",
     "ng-auto-moq": "4.0.2",
     "rxjs": "6.6.3",
     "semantic-release": "17.3.8",
