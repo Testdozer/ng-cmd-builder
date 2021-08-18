@@ -1,4 +1,4 @@
-import { BuilderContext, BuilderOutput } from "@angular-devkit/architect";
+import { BuilderContext, BuilderOutput, createBuilder } from "@angular-devkit/architect";
 import { JsonObject } from "@angular-devkit/core";
 import { Schema } from "./schema";
 import { injectorFactory } from "../injector/injector.factory";
@@ -16,7 +16,7 @@ import { COPY } from "./injection-tokens/copy.injection-token";
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const cpx = require("cpx");
 
-export default (
+const builder = async (
     options: JsonObject & Schema,
     context: BuilderContext,
 ): Promise<BuilderOutput> => {
@@ -36,3 +36,5 @@ export default (
     const assetsHandler = injector.get(AssetsHandler);
     return factory.create().then((output) => assetsHandler.handle(output));
 };
+
+export default createBuilder(builder);
