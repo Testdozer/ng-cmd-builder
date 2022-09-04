@@ -1,16 +1,9 @@
+import Jasmine from "jasmine";
+import "core-js/proposals/reflect-metadata.js";
 import { EqualMatchingInjectorConfig, Mock } from "moq.ts";
-import "reflect-metadata";
 
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable @typescript-eslint/naming-convention */
-const Jasmine = require("jasmine");
-/* eslint-enable @typescript-eslint/no-require-imports */
-/* eslint-enable @typescript-eslint/no-var-requires */
-/* eslint-enable @typescript-eslint/naming-convention */
-
-const jasmine = new Jasmine({}) as any;
-jasmine.configureDefaultReporter({
+const runner = new Jasmine({}) as any;
+runner.configureDefaultReporter({
     print: arg => {
         if (arg !== "[32m.[0m") {
             process.stdout.write(arg);
@@ -19,9 +12,9 @@ jasmine.configureDefaultReporter({
     showColors: true
 });
 
-jasmine.loadConfig({
+runner.loadConfig({
     /* eslint-disable @typescript-eslint/naming-convention */
-    spec_dir: "./",
+    spec_dir: "./specs/ng-cmd-builder",
     spec_files: [
         "**/*.[sS]pec.js"
     ]
@@ -29,4 +22,4 @@ jasmine.loadConfig({
 });
 
 Mock.options = {injectorConfig: new EqualMatchingInjectorConfig()};
-jasmine.execute();
+runner.execute();

@@ -1,8 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/spec",
-    "module": "commonjs",
+    "outDir": "../../specs/ng-cmd-builder",
+    "module": "CommonJS",
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "incremental": true,
     "types": [
       "jasmine",
       "node"
