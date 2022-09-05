@@ -49,7 +49,7 @@
     "rxjs": "6.6.3",
     "semantic-release": "17.4.7",
     "ts-node": "10.9.1",
-    "tslib": "2.1.0",
+    "tslib": "2.4.0",
     "tslint": "6.1.3",
     "typescript": "4.3.5",
     "@testdozer/ng-injector-types": "1.0.2",
