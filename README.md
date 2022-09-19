@@ -10,7 +10,7 @@
 This is an angular [CLI builder](https://angular.io/guide/cli-builder) that executes a cmd command. 
 It runs the command with nodejs [spawn](https://nodejs.org/docs/latest/api/child_process.html#child_process_child_process_spawn_command_args_options).
 
-At the moment schematics projects and another nodejs projects are not supported by the [angular workspace](https://angular.io/cli#workspaces-and-project-files) 
+At the moment the [angular workspace](https://angular.io/cli#workspaces-and-project-files) does not support schematics projects and another nodejs projects 
 due the lack of available builders.
 
 ```bash
