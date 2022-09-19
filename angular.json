@@ -10,11 +10,23 @@
       "prefix": "lib",
       "architect": {
         "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-cmd-builder/tsconfig.lib.json",
+            "project": "projects/ng-cmd-builder/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-cmd-builder/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "assets": {
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {
             "commands": [
               {
-                "command": "npm run builder:build"
+                "command": "sed -i '/prepublishOnly/d' ./dist/ng-cmd-builder/package.json"
               },
               {
                 "command": "npx cpy",
