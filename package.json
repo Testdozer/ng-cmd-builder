@@ -41,7 +41,7 @@
     "@typescript-eslint/parser": "5.37.0",
     "core-js": "3.25.2",
     "cpx": "1.5.0",
-    "ng-packagr": "14.1.0",
+    "ng-packagr": "14.2.1",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.23.1",
     "eslint-plugin-import": "2.26.0",
