@@ -16,7 +16,8 @@
     {
       "packagePatterns": [
         "@testdozer/ng-cmd-builder"
-      ]
+      ],
+      "enabled": false
     }
   ]
 }
