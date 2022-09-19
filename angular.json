@@ -12,27 +12,44 @@
         "build": {
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {
-            "command": "npm run builder:build",
-            "assets": [
+            "commands": [
               {
-                "source": "README.md",
-                "dest": "./dist/ng-cmd-builder"
+                "command": "npm run builder:build"
               },
               {
-                "source": "./projects/ng-cmd-builder/package.json",
-                "dest": "./dist/ng-cmd-builder"
+                "command": "npx cpy",
+                "args": [
+                  "README.md",
+                  "./dist/ng-cmd-builder"
+                ]
               },
               {
-                "source": "./projects/ng-cmd-builder/builders.json",
-                "dest": "./dist/ng-cmd-builder"
+                "command": "npx cpy",
+                "args": [
+                  "./projects/ng-cmd-builder/package.json",
+                  "./dist/ng-cmd-builder"
+                ]
               },
               {
-                "source": "./projects/ng-cmd-builder/src/lib/build/schema.json",
-                "dest": "./dist/ng-cmd-builder/lib/build"
+                "command": "npx cpy",
+                "args": [
+                  "./projects/ng-cmd-builder/builders.json",
+                  "./dist/ng-cmd-builder"
+                ]
               },
               {
-                "source": "./projects/ng-cmd-builder/src/lib/build/schema.d.ts",
-                "dest": "./dist/ng-cmd-builder/lib/build"
+                "command": "npx cpy",
+                "args": [
+                  "./projects/ng-cmd-builder/src/lib/build/schema.json",
+                  "./dist/ng-cmd-builder/lib/build"
+                ]
+              },
+              {
+                "command": "npx cpy",
+                "args": [
+                  "./projects/ng-cmd-builder/src/lib/build/schema.d.ts",
+                  "./dist/ng-cmd-builder/lib/build"
+                ]
               }
             ]
           }

@@ -2,7 +2,7 @@
   "name": "@testdozer/ng-cmd-builder",
   "version": "0.0.0-semantically-released",
   "author": "dvabuzyarov(at)gmail.com",
-  "type": "module",
+  "type": "commonjs",
   "license": "MIT",
   "readme": "README.md",
   "description": "Angular CLI builder that executes a CMD command",
