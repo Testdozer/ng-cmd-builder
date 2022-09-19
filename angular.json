@@ -26,7 +26,7 @@
           "options": {
             "commands": [
               {
-                "command": "sed -i '/prepublishOnly/d' ./dist/ng-cmd-builder/package.json"
+                "command": "npm pkg delete scripts.prepublishOnly"
               },
               {
                 "command": "npx cpy",
