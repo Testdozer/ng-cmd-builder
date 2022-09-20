@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/ng-cmd-builder/lib/build",
-    "target": "ESNext",
+    "target": "es2022",
     "module": "ESNext",
     "moduleResolution": "node",
     "declaration": true,

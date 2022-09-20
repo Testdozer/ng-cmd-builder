@@ -1,7 +1,7 @@
 {
   "builders": {
     "build": {
-      "implementation": "./fesm2020/testdozer-ng-cmd-builder.mjs",
+      "implementation": "./public_api.mjs",
       "schema": "./lib/build/schema.json",
       "description": "Executes cmd commands"
     }

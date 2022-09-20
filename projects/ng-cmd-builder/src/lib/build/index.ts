@@ -13,7 +13,7 @@ import { OptionsBuilder } from "./options.builder";
 import { Injector, StaticProvider } from "@angular/core";
 import { CommandExecutor } from "./command.executor";
 
-const builder = async (
+const builderFactory = async (
     options: JsonObject & Schema,
     context: BuilderContext,
 ): Promise<BuilderOutput> => {
@@ -34,4 +34,4 @@ const builder = async (
     return factory.create();
 };
 
-export default createBuilder(builder);
+export const builder = createBuilder(builderFactory);
