@@ -18,6 +18,7 @@ export class BuilderFactory {
         const {commands} = this.options;
         try {
             for (const command of commands) {
+                this.context.logger.info(`Executing: ${command.command}`);
                 await this.executor.run(command);
             }
         } catch {

@@ -22,40 +22,40 @@
               },
               {
                 "command": "npm pkg delete scripts.prepublishOnly",
-                "options":{
+                "options": {
                   "cwd": "./dist/ng-cmd-builder"
                 }
               },
               {
-                "command": "npx cpy",
+                "command": "npx cpx",
                 "args": [
                   "./projects/ng-cmd-builder/src/lib/build/public_api.mjs",
                   "./dist/ng-cmd-builder"
                 ]
               },
               {
-                "command": "npx cpy",
+                "command": "npx cpx",
                 "args": [
                   "README.md",
                   "./dist/ng-cmd-builder"
                 ]
               },
               {
-                "command": "npx cpy",
+                "command": "npx cpx",
                 "args": [
                   "./projects/ng-cmd-builder/builders.json",
                   "./dist/ng-cmd-builder"
                 ]
               },
               {
-                "command": "npx cpy",
+                "command": "npx cpx",
                 "args": [
                   "./projects/ng-cmd-builder/src/lib/build/schema.json",
                   "./dist/ng-cmd-builder/lib/build"
                 ]
               },
               {
-                "command": "npx cpy",
+                "command": "npx cpx",
                 "args": [
                   "./projects/ng-cmd-builder/src/lib/build/schema.d.ts",
                   "./dist/ng-cmd-builder/lib/build"
