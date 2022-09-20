@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/ng-cmd-builder/lib",
-    "target": "es2018",
-    "module": "commonjs",
+    "outDir": "../../dist/ng-cmd-builder/lib/build",
+    "target": "es2022",
+    "module": "ESNext",
     "moduleResolution": "node",
     "declaration": true,
     "sourceMap": true,
@@ -11,7 +11,7 @@
     "types": ["node"],
     "lib": [
       "dom",
-      "es2018"
+      "es2021"
     ]
   },
   "exclude": [

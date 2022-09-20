@@ -12,27 +12,54 @@
         "build": {
           "builder": "@testdozer/ng-cmd-builder:build",
           "options": {
-            "command": "npm run builder:build",
-            "assets": [
+            "commands": [
               {
-                "source": "README.md",
-                "dest": "./dist/ng-cmd-builder"
+                "command": "ng-packagr",
+                "args": [
+                  "-p projects/ng-cmd-builder/ng-package.json",
+                  "--config projects/ng-cmd-builder/tsconfig.lib.prod.json"
+                ]
               },
               {
-                "source": "./projects/ng-cmd-builder/package.json",
-                "dest": "./dist/ng-cmd-builder"
+                "command": "npm pkg delete scripts.prepublishOnly",
+                "options": {
+                  "cwd": "./dist/ng-cmd-builder"
+                }
               },
               {
-                "source": "./projects/ng-cmd-builder/builders.json",
-                "dest": "./dist/ng-cmd-builder"
+                "command": "npx cpx",
+                "args": [
+                  "./projects/ng-cmd-builder/src/lib/build/public_api.mjs",
+                  "./dist/ng-cmd-builder"
+                ]
               },
               {
-                "source": "./projects/ng-cmd-builder/src/lib/build/schema.json",
-                "dest": "./dist/ng-cmd-builder/lib/build"
+                "command": "npx cpx",
+                "args": [
+                  "README.md",
+                  "./dist/ng-cmd-builder"
+                ]
               },
               {
-                "source": "./projects/ng-cmd-builder/src/lib/build/schema.d.ts",
-                "dest": "./dist/ng-cmd-builder/lib/build"
+                "command": "npx cpx",
+                "args": [
+                  "./projects/ng-cmd-builder/builders.json",
+                  "./dist/ng-cmd-builder"
+                ]
+              },
+              {
+                "command": "npx cpx",
+                "args": [
+                  "./projects/ng-cmd-builder/src/lib/build/schema.json",
+                  "./dist/ng-cmd-builder/lib/build"
+                ]
+              },
+              {
+                "command": "npx cpx",
+                "args": [
+                  "./projects/ng-cmd-builder/src/lib/build/schema.d.ts",
+                  "./dist/ng-cmd-builder/lib/build"
+                ]
               }
             ]
           }
@@ -57,7 +84,6 @@
       }
     }
   },
-  "defaultProject": "ng-cmd-builder",
   "cli": {
     "analytics": false
   }

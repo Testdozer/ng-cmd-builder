@@ -1,11 +1,23 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/spec",
-    "module": "commonjs",
+    "outDir": "../../specs/ng-cmd-builder",
+    "incremental": true,
     "types": [
       "jasmine",
       "node"
+    ],
+    "plugins": [
+      {
+        "transform": "ts-transform-esm-import",
+        "after": true,
+        "afterDeclarations": true,
+        "type": "config",
+
+        "rootDir": "./projects/ng-cmd-builder",
+        "outDir": "../../specs/ng-cmd-builder",
+        "resolvers": [{ "dir": "./projects/ng-cmd-builder", "sourceDir": true }]
+      }
     ]
   },
   "include": [

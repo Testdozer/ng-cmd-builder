@@ -1,9 +1,8 @@
-import { JsonObject } from "@angular-devkit/core";
-import { Schema } from "./schema";
+import { CommandOptions } from "./schema";
 import { SpawnOptions } from "child_process";
 
 export class OptionsBuilder {
-    build({options: {shell, env, windowsHide, cwd}}: JsonObject & Schema) {
+    build({options: {shell, env, windowsHide, cwd}}: CommandOptions) {
 
         const options = {} as SpawnOptions;
         if (cwd !== undefined) {

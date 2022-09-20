@@ -1,9 +1,9 @@
 {
   "builders": {
     "build": {
-      "implementation": "./lib/build/index",
+      "implementation": "./public_api.mjs",
       "schema": "./lib/build/schema.json",
-      "description": "Executes cmd command"
+      "description": "Executes cmd commands"
     }
   }
 }

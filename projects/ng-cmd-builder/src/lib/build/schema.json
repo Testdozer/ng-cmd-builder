@@ -4,92 +4,49 @@
   "description": "Options for CMD Builder",
   "type": "object",
   "properties": {
-    "command": {
-      "type": "string",
-      "description": "The command to run."
-    },
-    "args": {
+    "commands": {
       "type": "array",
-      "description": "List of string arguments.",
-      "items": {
-        "type": "string"
-      }
-    },
-    "options": {
-      "type": "object",
-      "properties": {
-        "env": {
-          "type": "object",
-          "description": "Environment key-value pairs.",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "cwd": {
-          "type": "string",
-          "description": "Current working directory of the child process."
-        },
-        "shell": {
-          "type": "string",
-          "description": "<boolean> | <string> If true, runs command inside of a shell. Uses '/bin/sh' on Unix, and process.env.ComSpec on Windows. A different shell can be specified as a string. See Shell requirements and Default Windows shell. Default: true.",
-          "default": true
-        },
-        "windowsHide": {
-          "type": "boolean",
-          "description": "Hide the subprocess console window that would normally be created on Windows systems.",
-          "default": false
-        }
-      }
-    },
-    "assets": {
-      "type": "array",
-      "items": { "$ref": "#/definitions/asset" }
+      "items": { "$ref": "#/definitions/command" }
     }
   },
   "definitions": {
-    "asset": {
+    "command": {
       "type": "object",
-      "required": [ "source", "dest" ],
+      "required": [ "command" ],
       "properties": {
-        "source": {
+        "command": {
           "type": "string",
-          "description": "The glob of target files."
+          "description": "The command to run."
         },
-        "dest": {
-          "type": "string",
-          "description": "The path of a destination directory."
+        "args": {
+          "type": "array",
+          "description": "List of string arguments.",
+          "items": {
+            "type": "string"
+          }
         },
         "options": {
           "type": "object",
           "properties": {
-            "clean": {
-              "type": "boolean",
-              "description": "The flag to remove files that copied on past before copy.",
-              "default": false
+            "env": {
+              "type": "object",
+              "description": "Environment key-value pairs.",
+              "additionalProperties": {
+                "type": "string"
+              }
             },
-            "dereference": {
-              "type": "boolean",
-              "description": "The flag to follow symbolic links when copying from them.",
-              "default": false
+            "cwd": {
+              "type": "string",
+              "description": "Current working directory of the child process."
             },
-            "includeEmptyDirs": {
-              "type": "boolean",
-              "description": "The flag to copy empty directories which is matched with the glob.",
-              "default": false
+            "shell": {
+              "type": "string",
+              "description": "<boolean> | <string> If true, runs command inside of a shell. Uses '/bin/sh' on Unix, and process.env.ComSpec on Windows. A different shell can be specified as a string. See Shell requirements and Default Windows shell. Default: true.",
+              "default": true
             },
-            "initialCopy": {
+            "windowsHide": {
               "type": "boolean",
-              "description": "The flag to not copy at the initial time of watch.",
-              "default": false
-            },
-            "preserve": {
-              "type": "boolean",
-              "description": "The flag to copy uid, gid, atime, and mtime of files.",
-              "default": false
-            },
-            "update": {
-              "type": "boolean",
-              "description": "The flag to not overwrite files on destination if the source file is older.",
+              "description": "Hide the subprocess console window that would normally be created on Windows systems.",
               "default": false
             }
           }
@@ -99,6 +56,6 @@
   },
   "additionalProperties": false,
   "required": [
-    "command"
+    "commands"
   ]
 }
