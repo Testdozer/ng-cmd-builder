@@ -14,7 +14,11 @@
           "options": {
             "commands": [
               {
-                "command": "ng build package -c prod"
+                "command": "ng-packagr",
+                "args": [
+                  "-p projects/ng-cmd-builder/ng-package.json",
+                  "--config projects/ng-cmd-builder/tsconfig.lib.prod.json"
+                ]
               },
               {
                 "command": "npm pkg delete scripts.prepublishOnly",
@@ -25,14 +29,14 @@
               {
                 "command": "npx cpy",
                 "args": [
-                  "README.md",
+                  "./projects/ng-cmd-builder/src/lib/build/public_api.mjs",
                   "./dist/ng-cmd-builder"
                 ]
               },
               {
                 "command": "npx cpy",
                 "args": [
-                  "./projects/ng-cmd-builder/package.json",
+                  "README.md",
                   "./dist/ng-cmd-builder"
                 ]
               },
