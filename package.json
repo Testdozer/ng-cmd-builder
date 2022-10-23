@@ -36,7 +36,7 @@
     "@types/node": "18.7.18",
     "@typescript-eslint/eslint-plugin": "5.40.1",
     "@typescript-eslint/parser": "5.40.1",
-    "core-js": "3.25.5",
+    "core-js": "3.26.0",
     "cpx": "1.5.0",
     "ng-packagr": "14.2.1",
     "cz-conventional-changelog": "3.3.0",

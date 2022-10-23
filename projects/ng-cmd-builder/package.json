@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "jasmine": "4.4.0",
-    "core-js": "3.25.5",
+    "core-js": "3.26.0",
     "moq.ts": "9.0.2",
     "ng-auto-moq": "6.2.0"
   }
