@@ -33,7 +33,7 @@
     "@testdozer/ng-cmd-builder": "2.1.6",
     "@testdozer/ng-injector-types": "1.0.2",
     "@types/jasmine": "4.3.1",
-    "@types/node": "18.17.14",
+    "@types/node": "18.18.6",
     "@typescript-eslint/eslint-plugin": "5.48.0",
     "@typescript-eslint/parser": "5.48.0",
     "core-js": "3.32.1",
