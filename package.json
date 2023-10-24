@@ -46,7 +46,7 @@
     "eslint-plugin-prefer-arrow": "1.2.3",
     "husky": "8.0.3",
     "jasmine": "4.6.0",
-    "jasmine-core": "4.5.0",
+    "jasmine-core": "4.6.0",
     "moq.ts": "10.0.8",
     "ng-auto-moq": "6.2.3",
     "rxjs": "7.8.1",
