@@ -31,7 +31,7 @@
     "@testdozer/ng-injector-types": "*"
   },
   "devDependencies": {
-    "jasmine": "4.5.0",
+    "jasmine": "4.6.0",
     "core-js": "3.33.1",
     "moq.ts": "10.0.8",
     "ng-auto-moq": "6.2.3"
